@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WorldTrotter copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1B4BB6B61C8E1F100039C530</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1BB4843B1C5976F600DA25A5</key>
 		<dict>
 			<key>primary</key>

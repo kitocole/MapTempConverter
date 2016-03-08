@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var celsiusLabel: UILabel!
+    @IBOutlet var textField: UITextField!
     
     var fahrenheitValue: Double? {
         didSet {
@@ -35,7 +36,10 @@ class ConversionViewController: UIViewController {
         return nf
     } ()
     
-    @IBOutlet var textField: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
     @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
         if let text = textField.text, value = Double(text) {
@@ -58,4 +62,18 @@ class ConversionViewController: UIViewController {
             celsiusLabel.text = "???"
         }
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
+        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+        let replacementTextHasLetters = string.rangeOfCharacterFromSet(NSCharacterSet.letterCharacterSet())
+        if (existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil) || replacementTextHasLetters != nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    
 }

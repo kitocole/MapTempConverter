@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BB4843B1C5976F600DA25A5"
-               BuildableName = "MapTempConverter.app"
-               BlueprintName = "MapTempConverter"
+               BlueprintIdentifier = "1B4BB6B61C8E1F100039C530"
+               BuildableName = "WorldTrotter copy.app"
+               BlueprintName = "WorldTrotter copy"
                ReferencedContainer = "container:MapTempConverter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BB4843B1C5976F600DA25A5"
-            BuildableName = "MapTempConverter.app"
-            BlueprintName = "MapTempConverter"
+            BlueprintIdentifier = "1B4BB6B61C8E1F100039C530"
+            BuildableName = "WorldTrotter copy.app"
+            BlueprintName = "WorldTrotter copy"
             ReferencedContainer = "container:MapTempConverter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BB4843B1C5976F600DA25A5"
-            BuildableName = "MapTempConverter.app"
-            BlueprintName = "MapTempConverter"
+            BlueprintIdentifier = "1B4BB6B61C8E1F100039C530"
+            BuildableName = "WorldTrotter copy.app"
+            BlueprintName = "WorldTrotter copy"
             ReferencedContainer = "container:MapTempConverter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BB4843B1C5976F600DA25A5"
-            BuildableName = "MapTempConverter.app"
-            BlueprintName = "MapTempConverter"
+            BlueprintIdentifier = "1B4BB6B61C8E1F100039C530"
+            BuildableName = "WorldTrotter copy.app"
+            BlueprintName = "WorldTrotter copy"
             ReferencedContainer = "container:MapTempConverter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
