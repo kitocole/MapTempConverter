@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B3C1B2F1C92966100F244B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B3C1B311C92966100F244B3 /* Localizable.strings */; };
 		1B4BB6A51C8E1DB10039C530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4BB6A41C8E1DB10039C530 /* AppDelegate.swift */; };
 		1B4BB6AA1C8E1DBB0039C530 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4BB6A61C8E1DBB0039C530 /* ConversionViewController.swift */; };
-		1B4BB6AB1C8E1DBB0039C530 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B4BB6A71C8E1DBB0039C530 /* Info.plist */; };
 		1B4BB6AC1C8E1DBB0039C530 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4BB6A81C8E1DBB0039C530 /* MapViewController.swift */; };
 		1B4BB6AF1C8E1DC80039C530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4BB6AE1C8E1DC80039C530 /* Assets.xcassets */; };
 		1B4BB6B21C8E1E170039C530 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4BB6B01C8E1E170039C530 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B3C1B2B1C9293C500F244B3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = MapTempConverter/ja.lproj/Main.strings; sourceTree = "<group>"; };
+		1B3C1B2C1C9294AB00F244B3 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "MapTempConverter/es-MX.lproj/Main.strings"; sourceTree = "<group>"; };
+		1B3C1B301C92966100F244B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B3C1B321C92966A00F244B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B3C1B331C92966B00F244B3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B3C1B341C92967400F244B3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B3C1B351C92967500F244B3 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1B4B86BA1C928CD900113B3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = MapTempConverter/en.lproj/Main.strings; sourceTree = "<group>"; };
+		1B4B86BB1C928CFB00113B3F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = MapTempConverter/es.lproj/Main.strings; sourceTree = "<group>"; };
 		1B4BB6A41C8E1DB10039C530 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MapTempConverter/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1B4BB6A61C8E1DBB0039C530 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversionViewController.swift; path = MapTempConverter/ConversionViewController.swift; sourceTree = SOURCE_ROOT; };
 		1B4BB6A71C8E1DBB0039C530 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MapTempConverter/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -26,7 +35,6 @@
 		1B4BB6AE1C8E1DC80039C530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MapTempConverter/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		1B4BB6B11C8E1E170039C530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MapTempConverter/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		1B4BB6B41C8E1E1B0039C530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MapTempConverter/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		1B4BB6C71C8E1F100039C530 /* WorldTrotter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WorldTrotter copy-Info.plist"; path = "/Users/kaenyito-cole/Desktop/XCode Projects/MapTempConverter/WorldTrotter copy-Info.plist"; sourceTree = "<absolute>"; };
 		1B4BB6C81C8E3F310039C530 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1B8E57A41C83EC0000F1C6B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1BB4843C1C5976F600DA25A5 /* MapTempConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTempConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +60,6 @@
 				1B8E57A41C83EC0000F1C6B2 /* MapKit.framework */,
 				1BB4843E1C5976F600DA25A5 /* MapTempConverter */,
 				1BB4843D1C5976F600DA25A5 /* Products */,
-				1B4BB6C71C8E1F100039C530 /* WorldTrotter copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,11 +80,12 @@
 				1B4BB6B31C8E1E1B0039C530 /* Main.storyboard */,
 				1B4BB6B01C8E1E170039C530 /* LaunchScreen.storyboard */,
 				1B4BB6A71C8E1DBB0039C530 /* Info.plist */,
+				1B3C1B311C92966100F244B3 /* Localizable.strings */,
 				1B4BB6AE1C8E1DC80039C530 /* Assets.xcassets */,
 			);
 			name = MapTempConverter;
-			path = WorldTrotter;
-			sourceTree = "<group>";
+			path = "/Users/kaenyito-cole/Desktop/XCode Projects/MapTempConverter";
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
@@ -122,6 +130,9 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				ja,
+				"es-MX",
 			);
 			mainGroup = 1BB484331C5976F600DA25A5;
 			productRefGroup = 1BB4843D1C5976F600DA25A5 /* Products */;
@@ -139,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B4BB6B21C8E1E170039C530 /* LaunchScreen.storyboard in Resources */,
-				1B4BB6AB1C8E1DBB0039C530 /* Info.plist in Resources */,
+				1B3C1B2F1C92966100F244B3 /* Localizable.strings in Resources */,
 				1B4BB6AF1C8E1DC80039C530 /* Assets.xcassets in Resources */,
 				1B4BB6B51C8E1E1B0039C530 /* Main.storyboard in Resources */,
 			);
@@ -161,6 +172,19 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1B3C1B311C92966100F244B3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B3C1B301C92966100F244B3 /* Base */,
+				1B3C1B321C92966A00F244B3 /* en */,
+				1B3C1B331C92966B00F244B3 /* es */,
+				1B3C1B341C92967400F244B3 /* ja */,
+				1B3C1B351C92967500F244B3 /* es-MX */,
+			);
+			name = Localizable.strings;
+			path = MapTempConverter;
+			sourceTree = "<group>";
+		};
 		1B4BB6B01C8E1E170039C530 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -173,6 +197,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				1B4BB6B41C8E1E1B0039C530 /* Base */,
+				1B4B86BA1C928CD900113B3F /* en */,
+				1B4B86BB1C928CFB00113B3F /* es */,
+				1B3C1B2B1C9293C500F244B3 /* ja */,
+				1B3C1B2C1C9294AB00F244B3 /* es-MX */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
