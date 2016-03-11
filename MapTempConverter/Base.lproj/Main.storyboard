@@ -105,6 +105,7 @@
         <scene sceneID="hfs-hE-hZS">
             <objects>
                 <viewController id="ZGK-RL-MB8" customClass="MapViewController" customModule="MapTempConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="jm7-3Q-URP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwz-Jt-dWN" userLabel="First Responder" sceneMemberID="firstResponder"/>

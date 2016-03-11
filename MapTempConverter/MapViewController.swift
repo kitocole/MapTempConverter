@@ -63,9 +63,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         buttonLeadingConstraint.active = true
         buttonTrailingConstraint.active = true
 
+        //gesture recognizer for mkannotation
         let longPress = UILongPressGestureRecognizer(target: self, action: "addAnnotation:")
         longPress.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPress)
+        
+        //add button to remove annotations
+        let removePinButton = UIButton(type: .System)
+        removePinButton.setTitle("Remove pins", forState: .Normal)
+        removePinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(removePinButton)
+        
+        removePinButton.addTarget(self, action: "removePins:", forControlEvents: .TouchUpInside)
+        
+        let pinButtonBottomConstraint = removePinButton.bottomAnchor.constraintEqualToAnchor(margins.bottomAnchor)
+        let pinButtonTrailingConstraint = removePinButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        let pinButtonLeadingConstraint = removePinButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
+        
+        pinButtonBottomConstraint.active = true
+        pinButtonLeadingConstraint.active = true
+        pinButtonTrailingConstraint.active = true
+        
+        
     }
     
     func mapTypeChanged(segControl: UISegmentedControl) {
@@ -82,11 +102,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func addAnnotation(gestureRecognizer:UIGestureRecognizer){
-        let touchPoint = gestureRecognizer.locationInView(mapView)
-        let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = newCoordinates
-        mapView.addAnnotation(annotation)
+        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            let touchPoint = gestureRecognizer.locationInView(mapView)
+            let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = newCoordinates
+            var titleArray = [String]()
+            var subtitleArray = [String]()
+        
+            CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude), completionHandler: {(placemarks, error) -> Void in
+                if error != nil {
+                    print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                    return
+                }
+            
+                if placemarks!.count > 0 {
+                    let pm = placemarks![0]
+                
+                    //not all places have thoroughdare & subthoroughfare so validate those value
+                    let title = pm.thoroughfare! + "," + pm.subThoroughfare!
+                    let subtitle = pm.subLocality
+                
+                    titleArray.append(title)
+                    subtitleArray.append(subtitle!)
+                    annotation.title = title
+                    annotation.subtitle = subtitle
+                    self.mapView.addAnnotation(annotation)
+                    print(pm)
+                }
+            
+            })
+        }
+    }
+    
+    func removePins(sender: UIButton!) {
+        let annotationsToRemove = mapView.annotations.filter{ $0 !== mapView.userLocation}
+        mapView.removeAnnotations(annotationsToRemove)
     }
     
     func showLocButton(sender: UIButton!) {
@@ -99,6 +150,44 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(zoomedInCurrentLocation, animated: true)
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+            
+            if annotation is MKUserLocation {
+                //return nil so map view draws "blue dot" for standard user location
+                return nil
+            }
+            
+            let reuseId = "pin"
+            
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+            if pinView == nil {
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                pinView!.canShowCallout = true
+                pinView!.animatesDrop = true
+                pinView!.draggable = true
+                pinView!.pinTintColor = UIColor.blueColor()
+            }
+            else {
+                pinView!.annotation = annotation
+            }
+        
+        let deleteButton = UIButton(type: .Custom) as UIButton!
+        deleteButton.frame.size.width = 44
+        deleteButton.frame.size.height = 44
+        deleteButton.layer.cornerRadius = 5
+        deleteButton.backgroundColor = UIColor.redColor()
+        deleteButton.setImage(UIImage(named: "trash"), forState: .Normal)
+        
+        pinView?.leftCalloutAccessoryView = deleteButton
+            
+        return pinView
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let annotation = view.annotation
+        mapView.removeAnnotation(annotation!)
+        
+    }
     
     
     override func viewDidLoad() {
