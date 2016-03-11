@@ -63,7 +63,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         buttonLeadingConstraint.active = true
         buttonTrailingConstraint.active = true
 
-        
+        let longPress = UILongPressGestureRecognizer(target: self, action: "addAnnotation:")
+        longPress.minimumPressDuration = 1.0
+        mapView.addGestureRecognizer(longPress)
     }
     
     func mapTypeChanged(segControl: UISegmentedControl) {
@@ -79,6 +81,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func addAnnotation(gestureRecognizer:UIGestureRecognizer){
+        let touchPoint = gestureRecognizer.locationInView(mapView)
+        let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newCoordinates
+        mapView.addAnnotation(annotation)
+    }
+    
     func showLocButton(sender: UIButton!) {
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
@@ -88,6 +98,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let zoomedInCurrentLocation = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 500, 500)
         mapView.setRegion(zoomedInCurrentLocation, animated: true)
     }
+    
+    
     
     override func viewDidLoad() {
         //Always call the super implementation of viewDidLoad
