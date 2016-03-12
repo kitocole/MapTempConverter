@@ -13,6 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
+    var annotation: MKPointAnnotation!
     
     override func loadView() {
         //create a map view
@@ -105,10 +106,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             let touchPoint = gestureRecognizer.locationInView(mapView)
             let newCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-            let annotation = MKPointAnnotation()
+            annotation = MKPointAnnotation()
             annotation.coordinate = newCoordinates
-            var titleArray = [String]()
-            var subtitleArray = [String]()
         
             CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: newCoordinates.latitude, longitude: newCoordinates.longitude), completionHandler: {(placemarks, error) -> Void in
                 if error != nil {
@@ -123,11 +122,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     let title = pm.thoroughfare! + "," + pm.subThoroughfare!
                     let subtitle = pm.subLocality
                 
-                    titleArray.append(title)
-                    subtitleArray.append(subtitle!)
-                    annotation.title = title
-                    annotation.subtitle = subtitle
-                    self.mapView.addAnnotation(annotation)
+                    self.annotation.title = title
+                    self.annotation.subtitle = subtitle
+                    self.mapView.addAnnotation(self.annotation)
                     print(pm)
                 }
             
@@ -189,6 +186,37 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        if newState == MKAnnotationViewDragState.Ending || newState == MKAnnotationViewDragState.Canceling
+        {
+            view.dragState = MKAnnotationViewDragState.None
+        
+            let newCoordinates = CLLocation(latitude: self.annotation.coordinate.latitude, longitude: self.annotation.coordinate.longitude)
+            
+            CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: newCoordinates.coordinate.latitude, longitude: newCoordinates.coordinate.longitude), completionHandler: {(placemarks, error) -> Void in
+                if error != nil {
+                    print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                    return
+                }
+                
+                if placemarks!.count > 0 {
+                    let pm = placemarks![0]
+                    
+                    //not all places have thoroughdare & subthoroughfare so validate those value
+                    let title = pm.thoroughfare! + "," + pm.subThoroughfare!
+                    let subtitle = pm.subLocality
+                    
+                    self.annotation.title = title
+                    self.annotation.subtitle = subtitle
+                    self.mapView.addAnnotation(self.annotation)
+                    print(pm)
+                }
+                
+            })
+            
+        }
+
+    }
     
     override func viewDidLoad() {
         //Always call the super implementation of viewDidLoad
